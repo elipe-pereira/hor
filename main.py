@@ -33,5 +33,7 @@ class Main:
 
 
 if __name__ == "__main__":
+    base_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
+    os.chdir(base_dir)
     app = Main()
     app.run()
