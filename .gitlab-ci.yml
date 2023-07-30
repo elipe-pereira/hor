@@ -51,6 +51,9 @@
   - echo "Copiando arquivos"
   - ssh "$ssh_user"@"$server" "cd /tmp/hor-tmp && cp -av $package /tmp/$package/usr/share"
 
+  - echo "Apagando pasta temporária"
+  - ssh "$ssh_user"@"$server" "test -d /tmp/hor-tmp && rm -rf /tmp/hor-tmp"
+
 
   - echo "Deixando o usuário root como dono dos arquivos"
   - ssh "$ssh_user"@"$server" "chown -R root:root /tmp/$package"
