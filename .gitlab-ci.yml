@@ -5,11 +5,11 @@
   - ssh "$ssh_user"@"$server" "mkdir /tmp/$package/DEBIAN"
 
   - echo "Adicionado parametros essenciais ao arquivo control"
-  - ssh "$ssh_user"@"$server" "echo Section: $section >> /tmp/$package/DEBIAN/control"
+  - ssh "$ssh_user"@"$server" "echo Section:$section >> /tmp/$package/DEBIAN/control"
   - ssh "$ssh_user"@"$server" "echo Package:$package >> /tmp/$package/DEBIAN/control"
   - ssh "$ssh_user"@"$server" "echo Priority:$priority >> /tmp/$package/DEBIAN/control"
   - ssh "$ssh_user"@"$server" "echo Version:$version >> /tmp/$package/DEBIAN/control"
-  - ssh "$ssh_user"@"$server" "echo Architecture: $architecture >> /tmp/$package/DEBIAN/control"
+  - ssh "$ssh_user"@"$server" "echo Architecture:$architecture >> /tmp/$package/DEBIAN/control"
   - ssh "$ssh_user"@"$server" "echo Maintainer:$maintainer >> /tmp/$package/DEBIAN/control"
   - ssh "$ssh_user"@"$server" "echo Depends:$depends >> /tmp/$package/DEBIAN/control"
   - ssh "$ssh_user"@"$server" "echo Description: $description >> /tmp/$package/DEBIAN/control"
