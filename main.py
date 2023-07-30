@@ -29,10 +29,7 @@ class Main:
                 if not os.path.exists(self.move_dir):
                     os.mkdir(self.move_dir)
 
-                os.system("clamscan -r {0} --move={1} --remove={2}".format(self.scan_dir,
-                                                                           self.move_dir,
-                                                                            self._remove_files
-                                                                           ))
+                os.system("""clamscan -r {0} --move={1} --remove={2} """.format(self.scan_dir, self.move_dir, self._remove_files))
 
 
 if __name__ == "__main__":

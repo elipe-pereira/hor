@@ -1,0 +1,111 @@
+.create-deb-package: &create-deb-package
+  - echo "Criando pasta DEBIAN"
+  - ssh "$ssh_user"@"$server" "! test -d /tmp/$package/DEBIAN || rm -rf /tmp/$package"
+  - ssh "$ssh_user"@"$server" "mkdir /tmp/$package"
+  - ssh "$ssh_user"@"$server" "mkdir /tmp/$package/DEBIAN"
+
+  - echo "Adicionado parametros essenciais ao arquivo control"
+  - ssh "$ssh_user"@"$server" "echo Section: $section >> /tmp/$package/DEBIAN/control"
+  - ssh "$ssh_user"@"$server" "echo Package:$package >> /tmp/$package/DEBIAN/control"
+  - ssh "$ssh_user"@"$server" "echo Priority:$priority >> /tmp/$package/DEBIAN/control"
+  - ssh "$ssh_user"@"$server" "echo Version:$version >> /tmp/$package/DEBIAN/control"
+  - ssh "$ssh_user"@"$server" "echo Architecture: $architecture >> /tmp/$package/DEBIAN/control"
+  - ssh "$ssh_user"@"$server" "echo Maintainer:$maintainer >> /tmp/$package/DEBIAN/control"
+  - ssh "$ssh_user"@"$server" "echo Depends:$depends >> /tmp/$package/DEBIAN/control"
+  - ssh "$ssh_user"@"$server" "echo Description: $description >> /tmp/$package/DEBIAN/control"
+
+  - echo "Criando arquivo preinst localmente"
+  - echo "$cmd_preinst" >> /tmp/preinst-hor
+
+  - echo "Criando postinst localmente"
+  - echo "$cmd_postinst" >> /tmp/postinst-hor
+
+  - echo "Criando arquivo postrm localmente"
+  - echo "$cmd_postrm" >> /tmp/postrm-hor
+
+  - echo "Copiando arquivos"
+  - scp /tmp/preinst-hor "$ssh_user"@"$server":/tmp/"$package"/DEBIAN/preinst
+  - scp /tmp/postinst-hor "$ssh_user"@"$server":/tmp/"$package"/DEBIAN/postinst
+  - scp /tmp/postrm-hor "$ssh_user"@"$server":/tmp/"$package"/DEBIAN/postrm
+
+  - echo "Removendo arquivos"
+  - rm /tmp/preinst-hor
+  - rm /tmp/postinst-hor
+  - rm /tmp/postrm-hor
+
+  - echo "Dando permissão de execução aos arquivos dentro da pasta DEBIAN"
+  - ssh "$ssh_user"@"$server" "chmod +x /tmp/$package/DEBIAN/*"
+
+  - echo "Criando pasta /usr/share"
+  - ssh "$ssh_user"@"$server" "mkdir -p /tmp/$package/usr/share"
+
+  - echo "Compilando código"
+  - ./pyinstaller.sh
+
+  - echo "Enviando pasta compilada para pasta de empacotamento"
+  - rsync -av $package "$ssh_user"@"$server":"/tmp/$package/usr/share"
+
+  - echo "Deixando o usuário root como dono dos arquivos"
+  - ssh "$ssh_user"@"$server" "chown -R root:root /tmp/$package"
+
+  - echo "Efetuando o empacotamento"
+  - ssh "$ssh_user"@"$server" "dpkg-deb -Zxz -b /tmp/$package /tmp"
+
+  - echo "Enviando o arquivo empacotado para o repositório"
+  - ssh "$ssh_user"@"$server" "reprepro -b $repo_path/$distro includedeb $release /tmp/'$package'_'$version'_'$architecture'.deb"
+  - echo "Limpando arquivos"
+  - ssh "$ssh_user"@"$server" "test -d /tmp/$package/DEBIAN && rm -rf /tmp/$package*"
+  
+
+stages:
+  - deploy-teste
+  - deploy-prod
+
+variables:
+  ssh_user: root
+  server: valentino
+  distro: debian
+  release: hanokh
+  package: hor
+  priority: optional
+  architecture: amd64
+  maintainer: "Hanokh Software Labs"
+  depends: "clamav, clamav-daemon"
+  description: "Frontend para o clamav e clamscan"
+  cmd_preinst: "#!/bin/bash \n
+    ! test -f /etc/hor/hor.conf || cp -av /etc/hor/hor.conf /tmp \n 
+    "
+  cmd_postinst: "#!/bin/bash \n
+     test -h /etc/hor || ln -s /usr/share/hor/conf /etc/hor \n
+     test -h /usr/bin/hor || ln -s /usr/share/hor/hor /usr/bin/hor \n 
+  "
+  cmd_postrm: "#!/bin/bash \n
+    ! test -h /etc/hor || unlink /etc/hor \n
+    ! test -h /usr/bin/hor || unlink /usr/bin/hor \n
+  "
+
+Deploy teste:
+  stage: deploy-teste
+
+  variables:
+    repo_path: /srv/repo/testing
+    version: "0.0.0"
+
+  script:
+    - echo "ok"
+
+  rules:
+    - if: "$CI_COMMIT_BRANCH" == 'main-teste'
+
+Deploy prod:
+  stage: deploy-prod
+
+  variables:
+    repo_path: /srv/repo/packages
+    version: "0.1.0"
+
+  script:
+    - echo "ok"
+
+  rules:
+    - if: "$CI_COMMIT_BRANCH" == 'main'
