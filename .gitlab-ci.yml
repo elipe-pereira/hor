@@ -38,12 +38,19 @@
 
   - echo "Criando pasta /usr/share"
   - ssh "$ssh_user"@"$server" "mkdir -p /tmp/$package/usr/share"
+  
+  - echo "Criando pasta temporária no servidor"
+  - ssh "$ssh_user"@"$server" "mkdir /tmp/hor-tmp"
 
-  - echo "Compilando código"
-  - ./pyinstaller.sh
+  - echo "Enviando o código para pasta temporária no servidor"
+  - rsync -av * "$ssh_user"@"$server":/tmp/hor-tmp
 
-  - echo "Enviando pasta compilada para pasta de empacotamento"
-  - rsync -av $package "$ssh_user"@"$server":"/tmp/$package/usr/share"
+  - echo "Acessando pasta e compilando código"
+  - ssh "$ssh_user"@"$server" "cd /tmp/hor-tmp && ./pyinstaller.sh"
+
+  - echo "Copiando arquivos"
+  - ssh "$ssh_user"@"$server" "cd /tmp/hor-tmp && cp -av $package /tmp/$package/usr/share"
+
 
   - echo "Deixando o usuário root como dono dos arquivos"
   - ssh "$ssh_user"@"$server" "chown -R root:root /tmp/$package"
