@@ -99,13 +99,13 @@ Deploy teste:
 
   variables:
     repo_path: /srv/repo/testing
-    version: "0.0.0"
+    version: "0.1.0"
 
   script:
-    - echo "ok"
+    - *create-deb-package
 
   rules:
-    - if: $CI_COMMIT_BRANCH == 'main-teste'
+    - if: $CI_COMMIT_BRANCH == 'main'
 
 Deploy prod:
   stage: deploy-prod
@@ -118,4 +118,4 @@ Deploy prod:
     - *create-deb-package
 
   rules:
-    - if: $CI_COMMIT_BRANCH == 'main'
+    - if: $CI_COMMIT_TAG
