@@ -7,7 +7,7 @@ from configparser import ConfigParser
 
 class Main:
     def __init__(self):
-        self.base_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
+        self.base_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
         self.config = ConfigParser()
         self.config.read(self.base_dir + "/conf/hor.conf")
         self.config_sections = self.config.sections()
@@ -33,7 +33,5 @@ class Main:
 
 
 if __name__ == "__main__":
-    base_dir = "/usr/share/hor"
-    os.chdir(base_dir)
     app = Main()
     app.run()
