@@ -33,8 +33,6 @@ class Main:
 
 
 if __name__ == "__main__":
-    print("É o main")
+    os.chdir(self.base_dir)
     app = Main()
     app.run()
-
-print("é o main 2")
