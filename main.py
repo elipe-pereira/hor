@@ -33,5 +33,8 @@ class Main:
 
 
 if __name__ == "__main__":
+    print("É o main")
     app = Main()
     app.run()
+
+print("é o main 2")
