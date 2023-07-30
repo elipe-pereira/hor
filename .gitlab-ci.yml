@@ -105,7 +105,7 @@ Deploy prod:
     version: "0.1.0"
 
   script:
-    - echo "ok"
+    - *create-deb-package
 
   rules:
     - if: $CI_COMMIT_BRANCH == 'main'
