@@ -33,6 +33,6 @@ class Main:
 
 
 if __name__ == "__main__":
-    os.chdir(self.base_dir)
     app = Main()
+    os.chdir(app.base_dir)
     app.run()
