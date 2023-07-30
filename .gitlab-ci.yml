@@ -99,7 +99,7 @@ Deploy teste:
 
   variables:
     repo_path: /srv/repo/testing
-    version: "0.1.1-9"
+    version: "0.1.1-10"
 
   script:
     - *create-deb-package
