@@ -95,7 +95,7 @@ Deploy teste:
     - echo "ok"
 
   rules:
-    - if: "$CI_COMMIT_BRANCH" == 'main-teste'
+    - if: $CI_COMMIT_BRANCH == 'main-teste'
 
 Deploy prod:
   stage: deploy-prod
@@ -108,4 +108,4 @@ Deploy prod:
     - echo "ok"
 
   rules:
-    - if: "$CI_COMMIT_BRANCH" == 'main'
+    - if: $CI_COMMIT_BRANCH == 'main'
