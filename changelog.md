@@ -9,6 +9,11 @@
 ### Removed
 ### Fixed
 ### Security
+## [Released]
+## [0.1.1] - 2023-07-30
+### Fixed
+    - Ajustado erros nos nomes de variáveis
+    - Ajustado erros no nome do caminho de arquivo
 
 ## [Released]
 ## [0.1.0] - 2023-07-24

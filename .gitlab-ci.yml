@@ -112,7 +112,7 @@ Deploy prod:
 
   variables:
     repo_path: /srv/repo/packages
-    version: "0.1.0"
+    version: "0.1.1"
 
   script:
     - *create-deb-package
