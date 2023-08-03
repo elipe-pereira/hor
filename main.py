@@ -2,8 +2,8 @@
 # coding: utf-8
 
 import os
-import sys
 from configparser import ConfigParser
+
 
 class Main:
     def __init__(self):
@@ -15,7 +15,6 @@ class Main:
         self.move_dir = self.base_dir + "/infected_files"
         self.remove_files = "no"
         self.mail_admin = ""
-
 
     def run(self):
         for section in self.config_sections:
