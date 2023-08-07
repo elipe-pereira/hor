@@ -2,6 +2,11 @@
 ### Hor
 
 #### [Released]
+#### [0.2.3] - 2023-08-07
+##### Fixed
+- Adicionado nome da pasta escaneada no assunto.
+
+#### [Released]
 #### [0.2.2] - 2023-08-07
 #### Fixed
 - Ajustado comando pra ter suporte de execução em múltiplas linhas
