@@ -2,6 +2,11 @@
 ### Hor
 
 #### [Released]
+#### [0.2.2] - 2023-08-07
+#### Fixed
+- Ajustado comando pra ter suporte de execução em múltiplas linhas
+
+#### [Released]
 #### [0.2.1] - 2023-08-07
 #### Fixed
 - Adicionado campo assunto no e-mail relatório.

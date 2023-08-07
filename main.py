@@ -30,10 +30,10 @@ class Main:
             if not os.path.exists(self.move_dir):
                 os.mkdir(self.move_dir)
             command = """
-            clamscan -ri {0}
-            --move={1}
-            --remove={2}
-            |mutt -F {3} -s {4} {5}
+            clamscan -ri {0} \
+            --move={1} \
+            --remove={2} \
+            | mutt -F {3} -s {4} {5}
                     """
             os.system(command.format(self.scan_dir,
                                      self.move_dir,
