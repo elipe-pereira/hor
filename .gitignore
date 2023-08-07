@@ -8,3 +8,6 @@ system
 system/*
 infected_files
 infected_files/*
+.pydevproject
+.settings
+.settings/*
