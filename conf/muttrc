@@ -1,7 +1,7 @@
  set use_from=yes
  set mbox=+Inbox
  set spoolfile=+Inbox
- set envelope_from_address='noe@hanokh.com.br'
+ set envelope_from_address='hor@hanokh.com.br'
  set from='noe@hanokh.com.br'
  set force_name=yes
  set realname='HOR'

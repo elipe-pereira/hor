@@ -2,6 +2,11 @@
 ### Hor
 
 #### [Released]
+#### [0.2.0] - 2023-08-07
+##### Added
+- Envio de e-mail para o administrador mostrando relatório do scanner.
+
+#### [Released]
 #### [0.1.1] - 2023-07-30
 ##### Fixed
 - Ajustado erros nos nomes de variáveis

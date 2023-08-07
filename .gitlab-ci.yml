@@ -80,14 +80,15 @@ variables:
   priority: optional
   architecture: amd64
   maintainer: "Hanokh Software Labs"
-  depends: "clamav, clamav-daemon"
+  depends: "clamav,clamav-daemon,mutt"
   description: "Frontend para o clamav e clamscan"
   cmd_preinst: "#!/bin/bash \n
     ! test -f /etc/hor/hor.conf || cp -av /etc/hor/hor.conf /tmp \n 
     "
   cmd_postinst: "#!/bin/bash \n
      test -h /etc/hor || ln -s /usr/share/hor/conf /etc/hor \n
-     test -h /usr/bin/hor || ln -s /usr/share/hor/hor /usr/bin/hor \n 
+     test -h /usr/bin/hor || ln -s /usr/share/hor/hor /usr/bin/hor \n
+     ! test -f /tmp/hor.conf || cp -av /tmp/hor.conf /etc/hor/hor.conf 
   "
   cmd_postrm: "#!/bin/bash \n
     ! test -h /etc/hor || unlink /etc/hor \n
@@ -99,7 +100,7 @@ Deploy teste:
 
   variables:
     repo_path: /srv/repo/testing
-    version: "0.1.1-12"
+    version: "0.2.0"
 
   script:
     - *create-deb-package

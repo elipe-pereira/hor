@@ -15,6 +15,7 @@ class Main:
         self.move_dir = self.base_dir + "/infected_files"
         self.remove_files = "no"
         self.mail_admin = ""
+        self.mutt_file = self.base_dir + "/conf/muttrc"
 
     def run(self):
         for section in self.config_sections:
@@ -26,8 +27,13 @@ class Main:
 
             if not os.path.exists(self.move_dir):
                 os.mkdir(self.move_dir)
-            command = "clamscan -r {0} --move={1} --remove={2}"
-            os.system(command.format(self.scan_dir, self.move_dir, self.remove_files))
+            command = "clamscan -r {0} --move={1} --remove={2}|mutt -F {3} {4}"
+            os.system(command.format(self.scan_dir,
+                                     self.move_dir,
+                                     self.remove_files,
+                                     self.mutt_file,
+                                     self.mail_admin
+                                     ))
 
 
 if __name__ == "__main__":
