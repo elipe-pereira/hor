@@ -2,6 +2,13 @@
 ### Hor
 
 #### [Released]
+#### [0.2.1] - 2023-08-07
+#### Fixed
+- Adicionado campo assunto no e-mail relatório.
+- Ajustado para mostrar no e-mail somente arquivos 
+  infectados e o relatório final do scan.
+
+#### [Released]
 #### [0.2.0] - 2023-08-07
 ##### Added
 - Envio de e-mail para o administrador mostrando relatório do scanner.
@@ -9,8 +16,8 @@
 #### [Released]
 #### [0.1.1] - 2023-07-30
 ##### Fixed
-- Ajustado erros nos nomes de variáveis
-- Ajustado erros no nome do caminho de arquivo
+- Ajustado erros nos nomes de variáveis.
+- Ajustado erros no nome do caminho de arquivo.
 
 #### [Released]
 #### [0.1.0] - 2023-07-24

@@ -14,6 +14,7 @@ class Main:
         self.scan_dir = "/mnt"
         self.move_dir = self.base_dir + "/infected_files"
         self.remove_files = "no"
+        self.mail_subject = ""
         self.mail_admin = ""
         self.mutt_file = self.base_dir + "/conf/muttrc"
 
@@ -22,16 +23,23 @@ class Main:
             if section == "DEFAULT":
                 continue
             self.scan_dir = self.config.get(section, 'scan_dir')
+            self.mail_subject = self.config.get(section, 'mail_subject')
             self.mail_admin = self.config.get(section, 'mail_admin')
             self.remove_files = self.config.get(section, 'remove_files')
 
             if not os.path.exists(self.move_dir):
                 os.mkdir(self.move_dir)
-            command = "clamscan -r {0} --move={1} --remove={2}|mutt -F {3} {4}"
+            command = """
+            clamscan -ri {0}
+            --move={1}
+            --remove={2}
+            |mutt -F {3} -s {4} {5}
+                    """
             os.system(command.format(self.scan_dir,
                                      self.move_dir,
                                      self.remove_files,
                                      self.mutt_file,
+                                     self.mail_subject,
                                      self.mail_admin
                                      ))
 
