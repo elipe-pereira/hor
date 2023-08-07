@@ -20,15 +20,14 @@ class Main:
         for section in self.config_sections:
             if section == "DEFAULT":
                 continue
-            else:
-                self.scan_dir = self.config.get(section, 'scan_dir')
-                self.mail_admin = self.config.get(section, 'mail_admin')
-                self.remove_files = self.config.get(section, 'remove_files')
+            self.scan_dir = self.config.get(section, 'scan_dir')
+            self.mail_admin = self.config.get(section, 'mail_admin')
+            self.remove_files = self.config.get(section, 'remove_files')
 
-                if not os.path.exists(self.move_dir):
-                    os.mkdir(self.move_dir)
-
-                os.system("""clamscan -r {0} --move={1} --remove={2} """.format(self.scan_dir, self.move_dir, self.remove_files))
+            if not os.path.exists(self.move_dir):
+                os.mkdir(self.move_dir)
+            command = "clamscan -r {0} --move={1} --remove={2}"
+            os.system(command.format(self.scan_dir, self.move_dir, self.remove_files))
 
 
 if __name__ == "__main__":

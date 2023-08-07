@@ -1,8 +1,9 @@
 #!/bin/bash
 base_dir=`pwd`
 dist_path="."
-work_path="/tmp"
-spec_path="/tmp/build/hor"
+build_path="/tmp/build"
+work_path="${build_path}"
+spec_path="${build_path}"
 name="hor"
 
 mkdir -p $spec_path
