@@ -90,6 +90,7 @@ variables:
      test -h /usr/bin/hor || ln -s /usr/share/hor/hor /usr/bin/hor \n
      ! test -f /tmp/hor.conf || cp -av /tmp/hor.conf /etc/hor/hor.conf \n
      cp /usr/share/hor/hor.cron /etc/cron.d/hor \n 
+     chmod 0644 /etc/cron.d/hor \n
   "
   cmd_postrm: "#!/bin/bash \n
     ! test -h /etc/hor || unlink /etc/hor \n
@@ -101,7 +102,7 @@ Deploy teste:
 
   variables:
     repo_path: /srv/repo/testing
-    version: "0.3.0"
+    version: "0.3.0-1"
 
   script:
     - *create-deb-package
