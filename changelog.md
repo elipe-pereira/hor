@@ -1,5 +1,11 @@
-## Changelog
+### Changelog
 ### Hor
+
+#### [Released]
+#### [0.3.0] - 2023-0812
+##### Added
+- Adicionado arquivo de configuração cron para executar
+tarefas uma vez por semana. 
 
 #### [Released]
 #### [0.2.3] - 2023-08-07
