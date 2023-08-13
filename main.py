@@ -30,7 +30,7 @@ class Main:
                 os.mkdir(self.move_dir)
             command = """
             clamscan -ri {0} \
-            --exclude-dir=/sys
+            --exclude-dir=/sys \
             --move={1} \
             --remove={2} \
             | mutt -F {3} -s '{4}' {5}
