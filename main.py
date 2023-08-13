@@ -9,7 +9,7 @@ class Main:
     def __init__(self):
         self.base_dir = os.path.dirname(os.path.realpath(__file__))
         self.config = ConfigParser()
-        self.config.read(self.base_dir + "/conf/hor.conf")
+        self.config.read(self.base_dir + "/conf/hor.conf", "utf-8")
         self.config_sections = self.config.sections()
         self.scan_dir = "/mnt"
         self.move_dir = self.base_dir + "/infected_files"
@@ -30,6 +30,7 @@ class Main:
                 os.mkdir(self.move_dir)
             command = """
             clamscan -ri {0} \
+            --exclude-dir=/sys
             --move={1} \
             --remove={2} \
             | mutt -F {3} -s '{4}' {5}

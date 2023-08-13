@@ -2,9 +2,15 @@
 ### Hor
 
 #### [Released]
-#### [0.3.0] - 2023-0812
+#### [0.3.1] - 2023-08-12
+##### Changed
+- Adicionado encodind ao read do configparser.
+- Ajustado para excluir a pasta /sys dos scans por padrão.
+
+#### [Released]
+#### [0.3.0] - 2023-08-12
 ##### Added
-- Adicionado arquivo de configuração cron para executar
+- Adicionado arquivo de configuração cron para executar.
 tarefas uma vez por semana. 
 
 #### [Released]
