@@ -33,7 +33,7 @@ class Main:
             --exclude-dir=/sys \
             --move={1} \
             --remove={2} \
-            | mutt -F {3} -s '{4}' {5}
+            |mutt -F {3} -s '{4}' {5}
                     """
             os.system(command.format(self.scan_dir,
                                      self.move_dir,

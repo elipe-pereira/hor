@@ -4,7 +4,7 @@
 #### [Released]
 #### [0.3.1] - 2023-08-12
 ##### Changed
-- Adicionado encodind ao read do configparser.
+- Adicionado encoding ao read do configparser.
 - Ajustado para excluir a pasta /sys dos scans por padrão.
 
 #### [Released]
