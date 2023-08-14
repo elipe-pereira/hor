@@ -2,6 +2,11 @@
 ### Hor
 
 #### [Released]
+#### [0.4.0] - 2023-08-13
+##### Changed
+- Adicionado mensagem para indicando o fim da execução e também quando não há configuração criada.
+
+#### [Released]
 #### [0.3.1] - 2023-08-12
 ##### Changed
 - Adicionado encoding ao read do configparser.

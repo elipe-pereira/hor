@@ -42,6 +42,11 @@ class Main:
                                      self.mail_subject,
                                      self.mail_admin
                                      ))
+        else:
+            if len(self.config_sections) == 0:
+                print("Não há seções configuradas")
+            else:
+                print("Fim da execução!")
 
 
 if __name__ == "__main__":
