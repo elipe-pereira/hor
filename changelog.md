@@ -2,9 +2,16 @@
 ### Hor
 
 #### [Released] - 2023-08-18
+#### [0.5.1]
+##### Fixed
+- Ajustado nome incorreto de variável.
+- Ajustado também a busca pelo nome do correto
+no arquivo de configuração.
+
+#### [Released] - 2023-08-18
 #### [0.5.0]
 ##### Added
-- Adicionado novo parametro no arquivo de configuração chamado servername para dar
+- Adicionado novo parametro no arquivo de configuração chamado hostname para dar
 suporte ao envio de e-mail com o nome do servidor no assunto.
 ##### Changed
 - Alterado assunto do e-mail para conter nome do servidor e nome da rotina de scan.

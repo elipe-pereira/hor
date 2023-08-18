@@ -21,7 +21,7 @@ class Main:
 
     def run(self):
         for section in self.config_sections:
-            self.servername = self.conf.get(section, 'servername')
+            self.servername = self.config.get(section, 'hostname')
             self.scan_dir = self.config.get(section, 'scan_dir')
             self.mail_subject = self.config.get(section, 'mail_subject')
             self.mail_subject = self.mail_subject \
