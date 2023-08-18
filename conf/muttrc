@@ -1,4 +1,3 @@
- unset record
  set use_from=yes
  set mbox=+Inbox
  set spoolfile=+Inbox
@@ -9,3 +8,5 @@
  set my_user=hor@hanokh.com.br
  set my_pass='4jya0dpPrfbG6Rf12m4t'
  set smtp_url=smtps://$my_user:$my_pass@valentino.hanokh.com.br:465
+ unset record
+ set copy=no
