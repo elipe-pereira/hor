@@ -1,3 +1,4 @@
+ unset record
  set use_from=yes
  set mbox=+Inbox
  set spoolfile=+Inbox

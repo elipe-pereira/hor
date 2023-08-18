@@ -2,6 +2,11 @@
 ### Hor
 
 #### [Released] - 2023-08-18
+#### [0.5.2]
+##### Fixed
+- Adicionado parãmetro pra evitar mensagem de erro ao enviar e-mail.
+
+#### [Released] - 2023-08-18
 #### [0.5.1]
 ##### Fixed
 - Ajustado nome incorreto de variável.
