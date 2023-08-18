@@ -16,13 +16,16 @@ class Main:
         self.remove_files = "no"
         self.mail_subject = ""
         self.mail_admin = ""
+        self.servername = "Servidor"
         self.mutt_file = self.base_dir + "/conf/muttrc"
 
     def run(self):
         for section in self.config_sections:
+            self.servername = self.conf.get(section, 'servername')
             self.scan_dir = self.config.get(section, 'scan_dir')
             self.mail_subject = self.config.get(section, 'mail_subject')
-            self.mail_subject = self.mail_subject + " | " + self.scan_dir
+            self.mail_subject = self.mail_subject \
+                + " | " + self.servername + " - " + section
             self.mail_admin = self.config.get(section, 'mail_admin')
             self.remove_files = self.config.get(section, 'remove_files')
 

@@ -1,6 +1,14 @@
 ### Changelog
 ### Hor
 
+#### [Released] - 2023-08-18
+#### [0.5.0]
+##### Added
+- Adicionado novo parametro no arquivo de configuração chamado servername para dar
+suporte ao envio de e-mail com o nome do servidor no assunto.
+##### Changed
+- Alterado assunto do e-mail para conter nome do servidor e nome da rotina de scan.
+
 #### [Released]
 #### [0.4.0] - 2023-08-13
 ##### Changed
