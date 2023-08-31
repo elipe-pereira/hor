@@ -1,6 +1,11 @@
 ### Changelog
 ### Hor
 
+#### [Released] - 2023-08-30
+#### [0.5.3]
+#### Fixed
+- Ajustado para que antivirus não escaneie uma segunda vez os arquivos na pasta de infectados.
+
 #### [Released] - 2023-08-18
 #### [0.5.2]
 ##### Fixed

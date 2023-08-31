@@ -34,6 +34,7 @@ class Main:
             command = """
             clamscan -ri {0} \
             --exclude-dir=/sys \
+            --exclude-dir={1} \
             --move={1} \
             --remove={2} \
             |mutt -F {3} -s '{4}' {5}

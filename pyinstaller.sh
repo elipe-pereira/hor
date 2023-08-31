@@ -1,5 +1,5 @@
 #!/bin/bash
-base_dir=`pwd`
+base_dir=$(pwd)
 dist_path="."
 build_path="/tmp/build"
 work_path="${build_path}"
