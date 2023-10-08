@@ -1,13 +1,17 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # coding: utf-8
 
-import os
+from os import mkdir
+from os import system
+from os.path import exists
+from os.path import dirname
+from os.path import realpath
 from configparser import ConfigParser
 
 
 class Main:
     def __init__(self):
-        self.base_dir = os.path.dirname(os.path.realpath(__file__))
+        self.base_dir = dirname(realpath(__file__))
         self.config = ConfigParser()
         self.config.read(self.base_dir + "/conf/hor.conf", "utf-8")
         self.config_sections = self.config.sections()
@@ -29,23 +33,26 @@ class Main:
             self.mail_admin = self.config.get(section, 'mail_admin')
             self.remove_files = self.config.get(section, 'remove_files')
 
-            if not os.path.exists(self.move_dir):
-                os.mkdir(self.move_dir)
+            if not exists(self.move_dir):
+                mkdir(self.move_dir)
             command = """
             clamscan -ri {0} \
             --exclude-dir=/sys \
             --exclude-dir={1} \
+            --log=/var/log/hor.log \
             --move={1} \
             --remove={2} \
             |mutt -F {3} -s '{4}' {5}
                     """
-            os.system(command.format(self.scan_dir,
-                                     self.move_dir,
-                                     self.remove_files,
-                                     self.mutt_file,
-                                     self.mail_subject,
-                                     self.mail_admin
-                                     ))
+            system(command.format(
+                self.scan_dir,
+                self.move_dir,
+                self.remove_files,
+                self.mutt_file,
+                self.mail_subject,
+                self.mail_admin
+                )
+            )
         else:
             if len(self.config_sections) == 0:
                 print("Não há seções configuradas")
