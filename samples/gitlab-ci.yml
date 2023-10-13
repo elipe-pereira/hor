@@ -72,8 +72,8 @@ stages:
   - deploy-prod
 
 variables:
-  ssh_user: root
-  server: valentino
+  ssh_user: put_your_user_here
+  server: server_ip_or_name
   distro: debian
   release: hanokh
   package: hor

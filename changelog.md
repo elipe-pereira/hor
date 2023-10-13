@@ -1,6 +1,11 @@
 ### Changelog
 ### Hor
 
+#### [Released]
+#### [0.6.0] - 2023-10-09
+##### Added
+- Adicionado opção de escaneamento rápido, ignorando arquivo de configuração. 
+
 #### [Released] - 2023-08-30
 #### [0.5.3]
 #### Fixed
