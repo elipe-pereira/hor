@@ -8,6 +8,7 @@ from os.path import exists
 from os.path import dirname
 from os.path import realpath
 from configparser import ConfigParser
+from helpers.validate_arg import validate_arg
 
 
 class Main:
@@ -25,15 +26,10 @@ class Main:
         self.mutt_file = self.basedir + "/conf/muttrc"
 
     def run(self):
-        parameter = ""
-        try:
-            parameter = argv[1]
-        except IndexError:
-            pass
-
         if not exists(self.move_dir):
             mkdir(self.move_dir)
 
+        parameter = validate_arg(argv)
         path_exists = exists(parameter)
         if path_exists:
             cmd = """

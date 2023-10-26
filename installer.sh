@@ -10,7 +10,8 @@ function build(){
 
     mkdir -p ${dist_path}
 
-    pyinstaller --distpath $dist_path\
+    pyinstaller --contents-directory "." \
+        --distpath $dist_path \
         --add-data "$base_dir/conf:conf" \
         --add-data "$base_dir/hor.cron:." \
         --workpath $work_path \
@@ -28,19 +29,19 @@ function pack(){
     depends="clamav,mutt"
     description="Frontend for clamav and clamscan"
     version="0.6.0"
-    cmd_preinst="#!/bin/bash \n
-    ! test -f /etc/${appname}/${appname}.conf || cp -av /etc/${appname}/${appname}.conf /tmp \n
+    cmd_preinst="#!/bin/bash
+    ! test -f /etc/${appname}/${appname}.conf || cp -av /etc/${appname}/${appname}.conf /tmp
     "
-    cmd_postinst="#!/bin/bash \n
-    test -h /etc/${appname} || ln -s /usr/share/${appname}/conf /etc/${appname} \n
-    test -h /usr/bin/${appname} || ln -s /usr/share/${appname}/${appname} /usr/bin/${appname} \n
-    test ! -f /tmp/${appname}.conf || cp -av /tmp/${appname}.conf /etc/${appname}/${appname}.conf \n
-    cp /usr/share/${appname}/${appname}.cron /etc/cron.d/${appname} \n
-    chmod 0644 /etc/cron.d/${appname} \n
+    cmd_postinst="#!/bin/bash
+    test -h /etc/${appname} || ln -s /usr/share/${appname}/conf /etc/${appname}
+    test -h /usr/bin/${appname} || ln -s /usr/share/${appname}/${appname} /usr/bin/${appname}
+    test ! -f /tmp/${appname}.conf || cp -av /tmp/${appname}.conf /etc/${appname}/${appname}.conf
+    cp /usr/share/${appname}/${appname}.cron /etc/cron.d/${appname}
+    chmod 0644 /etc/cron.d/${appname}
     "
-    cmd_postrm="#!/bin/bash \n
-    ! test -h /etc/hor || unlink /etc/hor \n
-    ! test -h /usr/bin/hor || unlink /usr/bin/hor \n
+    cmd_postrm="#!/bin/bash
+    ! test -h /etc/hor || unlink /etc/hor
+    ! test -h /usr/bin/hor || unlink /usr/bin/hor
     "
 
     # Apaga builds antigos
