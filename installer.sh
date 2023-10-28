@@ -11,12 +11,12 @@ function build(){
     mkdir -p ${dist_path}
 
     pyinstaller --contents-directory "." \
-        --distpath $dist_path \
-        --add-data "$base_dir/conf:conf" \
-        --add-data "$base_dir/hor.cron:." \
-        --workpath $work_path \
-        --specpath $spec_path \
-        --name $name main.py
+        --distpath ${dist_path} \
+        --add-data "${base_dir}/conf:conf" \
+        --add-data "${base_dir}/hor.cron:." \
+        --workpath ${work_path} \
+        --specpath ${spec_path} \
+        --name ${name} main.py
 }
 
 function pack(){
