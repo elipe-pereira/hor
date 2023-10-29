@@ -13,3 +13,9 @@
   Ele também incorpora pequenas funcionalidades adicionais como o envio de e-mail após a 
   conclusão do scaneamento informando o cliente sobre a conclusão da verificação.
 
+#### Uso
+
+  ~# hor /tmp
+
+Se for usado um parâmetro, este precisa ser uma pasta que deverá ser escaneada. Caso
+essa pasta não exista, o programa irá verificar o arquivo de configuração. 

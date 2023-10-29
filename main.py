@@ -2,6 +2,7 @@
 # coding: utf-8
 
 from sys import argv
+from sys import exit
 from os import mkdir
 from os import system
 from os.path import exists
@@ -40,6 +41,9 @@ class Main:
             --remove=yes
             """
             system(cmd.format(parameter, self.move_dir))
+        elif path_exists is False and parameter:
+            print("Pasta ou arquivo inexistente!")
+            exit(1)
         else:
             for section in self.config_sections:
                 self.servername = self.config.get(section, 'hostname')

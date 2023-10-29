@@ -2,6 +2,12 @@
 ### Hor
 
 #### [Released]
+#### [0.6.1] - 2023-10-29
+##### Fixed
+ - Adicionado mensagem de erro quando a pasta informada como parâmetro no 
+ escaneamento rápido não existe.
+
+#### [Released]
 #### [0.6.0] - 2023-10-09
 ##### Added
 - Adicionado opção de escaneamento rápido, ignorando arquivo de configuração. 
