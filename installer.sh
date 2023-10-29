@@ -70,7 +70,7 @@ function pack(){
 
     build
 
-    cp -av /tmp/build/dist/${package} /tmp/${package}/usr/share
+    cp /tmp/build/dist/${package} /tmp/${package}/usr/share
 
     dpkg-deb -Zxz -b /tmp/$package .
     test -d /tmp/${package}/DEBIAN && rm -rf /tmp/$package*
