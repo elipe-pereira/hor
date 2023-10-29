@@ -28,7 +28,7 @@ function pack(){
     maintainer="Eli Florêncio Pereira"
     depends="clamav,mutt"
     description="Frontend for clamav and clamscan"
-    version="0.6.0"
+    version=$(cat version)
     cmd_preinst="#!/bin/bash
     ! test -f /etc/${appname}/${appname}.conf || cp -av /etc/${appname}/${appname}.conf /tmp
     "
@@ -70,7 +70,7 @@ function pack(){
 
     build
 
-    cp /tmp/build/dist/${package} /tmp/${package}/usr/share
+    cp -a /tmp/build/dist/${package} /tmp/${package}/usr/share
 
     dpkg-deb -Zxz -b /tmp/$package .
     test -d /tmp/${package}/DEBIAN && rm -rf /tmp/$package*
