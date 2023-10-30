@@ -100,3 +100,8 @@ Apaga a pasta /tmp/build, que é onde ficam armazenados os arquivos
 resultantes do empacotamento e build. Sempre é bom executar esse 
 comando se deseja fazer um novo build ou se simplesmente deseja 
 limpar arquivos que não são mais necessários. 
+
+#### Instalando pacote deb gerado
+    ~# apt-get install ./hor_x.x.x_amd64.deb
+  
+Faz a instalação via apt do arquivo .deb local. 
