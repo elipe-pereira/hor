@@ -2,6 +2,12 @@
 ### Hor
 
 #### [Released]
+#### [0.7.0] - 2023-10-29
+##### Added
+ - Adicionado função de ajuda no script de instalação e tornado
+ opção help como default.
+
+#### [Released]
 #### [0.6.1] - 2023-10-29
 ##### Fixed
  - Adicionado mensagem de erro quando a pasta informada como parâmetro no 

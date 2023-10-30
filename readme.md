@@ -69,3 +69,34 @@ será compilado, porém, ocorrerão erros na execução do código compilado, ca
 pela falta das bibliotecas que não estavam no mesmo ambiente virtual do pyinstaller.
 
 #### installer.sh
+
+##### Baixando projeto
+    ~# git clone git@github.com:elipe-pereira/hor.git
+##### Dando permissão ao installer.sh
+    ~# cd hor 
+    ~# chmod +x installer.sh
+##### Utilizando
+    ~# ./installer.sh pack
+
+O parâmetro pack compila o projeto e logo em seguida gera um pacote .deb dentro da pasta
+raiz do projeto. Lembre-se que o pyinstaller precisa estar instalado como mostrado acima.
+
+    ~# ./installer build
+
+Somente compila o projeto e armazena o projeto compilado na pasta /tmp/build/dist. 
+Lembre se de seguir o processo de instalação do pyinstaller explicado logo acima, 
+para que não haja erros durante o build.
+
+    ~# ./installer
+
+Exibe uma mensagem de ajuda. assim como:
+    ~$ ./installer help
+
+Ambos, exibem a mesma mensagem. 
+
+    ~# ./installer clear
+
+Apaga a pasta /tmp/build, que é onde ficam armazenados os arquivos 
+resultantes do empacotamento e build. Sempre é bom executar esse 
+comando se deseja fazer um novo build ou se simplesmente deseja 
+limpar arquivos que não são mais necessários. 

@@ -85,6 +85,15 @@ function clear(){
     test -d ${package_build_path} && rm -rf ${package_build_path}
 }
 
+function help(){
+    echo "
+    help - Imprime essa mensagem de ajuda
+    pack - Compila o programa e empacota gerando na pasta raiz um arquivo .deb. 
+    build - Compila o programa, seguindo os parâmetros já estabelecidos na função.
+    clear - Apaga a pasta de build. Onde ficam os arquivos gerados pelo build e pack.
+    "
+}
+
 case "$1" in 
     build)
         build
@@ -94,5 +103,11 @@ case "$1" in
     ;;
     clear)
         clear
+    ;;
+    help)
+        help
+    ;;
+    *)
+        help
     ;;
 esac
