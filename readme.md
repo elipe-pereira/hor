@@ -102,6 +102,10 @@ comando se deseja fazer um novo build ou se simplesmente deseja
 limpar arquivos que não são mais necessários. 
 
 #### Instalando pacote deb gerado
+    ~# git clone git@github.com:elipe-pereira/hor.git
+    ~# cd hor
+    ~# chmod +x installer.sh
+    ~# ./installer.sh pack
     ~# apt-get install ./hor_x.x.x_amd64.deb
   
 Faz a instalação via apt do arquivo .deb local.
