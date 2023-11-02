@@ -71,11 +71,16 @@ pela falta das bibliotecas que não estavam no mesmo ambiente virtual do pyinsta
 #### installer.sh
 
 ##### Baixando projeto
+
     ~# git clone git@github.com:elipe-pereira/hor.git
+
 ##### Dando permissão ao installer.sh
+
     ~# cd hor 
     ~# chmod +x installer.sh
+
 ##### Utilizando
+
     ~# ./installer.sh pack
 
 O parâmetro pack compila o projeto e logo em seguida gera um pacote .deb dentro da pasta
@@ -90,6 +95,7 @@ para que não haja erros durante o build.
     ~# ./installer
 
 Exibe uma mensagem de ajuda. assim como:
+
     ~$ ./installer help
 
 Ambos, exibem a mesma mensagem. 
@@ -102,6 +108,7 @@ comando se deseja fazer um novo build ou se simplesmente deseja
 limpar arquivos que não são mais necessários. 
 
 #### Instalando pacote deb gerado
+
     ~# git clone git@github.com:elipe-pereira/hor.git
     ~# cd hor
     ~# chmod +x installer.sh
@@ -109,3 +116,67 @@ limpar arquivos que não são mais necessários.
     ~# apt-get install ./hor_x.x.x_amd64.deb
   
 Faz a instalação via apt do arquivo .deb local.
+
+
+#### Seções do arquivo de configuração
+
+    [DEFAULT]
+
+A seção default é ignorada durante a leitura da configuração e serve como 
+modelo para outros configurações. Para criar uma configuração válida, você
+criar uma nova seção com um nome que não seja muito longo. Por exemplo:
+
+    [scan-so]
+
+Qualquer nome diferente de default será lido e interpretado pelo programa. E a 
+seção de um conjunto de parâmetros de configuração que são necessários para a 
+execução sem erros do programa. A seção [DEFAULT] exibe todo o conjunto de 
+parametros necessários para a execução sem erros do programa e que devem
+ser copiados para as novas seções a serem criadas. 
+
+##### Modelo de configuração
+
+    [DEFAULT]
+    # Seção de exemplo
+    scan_dir = /mnt
+    mail_subject = Relatório de Scan de vírus
+    mail_admin = admin@admin.com.br
+    remove_files = no
+    hostname = Servidor
+
+
+###### Comentários
+
+O '#' indica uma linha de comentário. As configurações podem ter comentários
+para ajudar a esclarecer o porquê de determinada pasta estar sendo escaneada. 
+
+###### scan_dir
+
+É a pasta que será escaneada, pode não parecer obvio, mas em alguns casos o 
+administrador deseja escanear somente algumas pastas onde há arquivos que podem
+ser nocivos para outros usuários, principalmente pastas que são compartilhadas 
+com usuários windows. 
+
+###### mail_subject
+
+Esse parâmetro pode ser utilizado em casos onde além de escanear, o administrador
+deseja que seja enviado um e-mail informando sobre o término do scan. O parametro
+ajudará a esclarecer o teor do e-mail ou pelo do quê ou de onde é o e-mail. 
+
+##### mail_admin
+
+O endereço de e-mail do administrador do sistema deverá ser colocado nesse 
+parâmetro. 
+
+###### remove_files
+
+Se um vírus for encontrado, esse parâmetro define que o arquivo seja 
+prontamente removido. O arquivo será removido de onde estiver, porém uma
+cópia será enviada para a pasta infected_files dentro da pasta raiz do 
+programa.
+
+###### hostname
+
+O Nome do servidor, será útil no envio do e-mail onde o nome do servidor também
+será incluso. 
+
