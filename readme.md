@@ -180,3 +180,29 @@ programa.
 O Nome do servidor, será útil no envio do e-mail onde o nome do servidor também
 será incluso. 
 
+#### mutt
+
+O mutt o cliente de e-mail utilizado para envio de e-mails pelo hor. Para que 
+o hor possa enviar e-mails será necessário configurar o arquivo muttr na pasta
+de configuração do hor. 
+
+O arquivo de configuração possui os seguintes parâmetros: 
+
+    set use_from=yes
+    set mbox=+Inbox
+    set spoolfile=+Inbox
+    set envelope_from_address='hor@youdomain.com'
+    set from='hor@yourdomain.com'
+    set force_name=yes
+    set realname='HOR'
+    set my_user=hor@mydomain.com
+    set my_pass='password'
+    set smtp_url=smtps://$my_user:$my_pass@smtp.mydomain.com:465
+    unset record
+    set copy=no
+
+Adeque o arquivo de configuração com as suas configurações de domínio 
+prestando atenção principalmente nos parâmetros **my_user**, **my_pass** e 
+**smtp_url** que obrigatoriamente deve possuir as configurações corretas para
+que o envio de e-mail possa ser efetuado. 
+
