@@ -30,18 +30,25 @@ function pack(){
     description="Frontend for clamav and clamscan"
     version=$(cat version)
     cmd_preinst="#!/bin/bash
-    ! test -f /etc/${appname}/${appname}.conf || cp -av /etc/${appname}/${appname}.conf /tmp
+    test ! -f /etc/${appname}/${appname}.conf || \
+        cp -av /etc/${appname}/${appname}.conf /tmp
     "
     cmd_postinst="#!/bin/bash
-    test -h /etc/${appname} || ln -s /usr/share/${appname}/conf /etc/${appname}
-    test -h /usr/bin/${appname} || ln -s /usr/share/${appname}/${appname} /usr/bin/${appname}
-    test ! -f /tmp/${appname}.conf || cp -av /tmp/${appname}.conf /etc/${appname}/${appname}.conf
+    test -h /etc/${appname} || \
+        ln -s /usr/share/${appname}/conf /etc/${appname}
+
+    test -h /usr/bin/${appname} || \
+        ln -s /usr/share/${appname}/${appname} /usr/bin/${appname}
+
+    test ! -f /tmp/${appname}.conf || \
+        cp /tmp/${appname}.conf /etc/${appname}/${appname}.conf
+
     cp /usr/share/${appname}/${appname}.cron /etc/cron.d/${appname}
     chmod 0644 /etc/cron.d/${appname}
     "
     cmd_postrm="#!/bin/bash
-    ! test -h /etc/hor || unlink /etc/hor
-    ! test -h /usr/bin/hor || unlink /usr/bin/hor
+    test ! -h /etc/hor || unlink /etc/hor
+    test ! -h /usr/bin/hor || unlink /usr/bin/hor
     "
 
     # Apaga builds antigos
@@ -74,6 +81,7 @@ function pack(){
 
     dpkg-deb -Zxz -b /tmp/$package .
     test -d /tmp/${package}/DEBIAN && rm -rf /tmp/$package*
+    clear
 }
 
 function clear(){
@@ -90,7 +98,7 @@ function help(){
     help - Imprime essa mensagem de ajuda
     pack - Compila o programa e empacota gerando na pasta raiz um arquivo .deb. 
     build - Compila o programa, seguindo os parâmetros já estabelecidos na função.
-    clear - Apaga a pasta de build. Onde ficam os arquivos gerados pelo build e pack.
+    clear - Apaga a pasta de build. Onde ficam os arquivos gerados pelo build.
     "
 }
 
